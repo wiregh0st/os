@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+source initVars
+
+#cat ~/.wslconfig | awk -F '=' '{print $2}'
+#cat ~/.wslconfig
+
+wslconfig=$HOME/.wslconfig
+
+#see if val exists; need condition for if val exists and if not exists
+cat $wslconfig
+currMemoryVal=$(grep 'memory' $wslconfig | awk -F '=' '{print substr($2, 0, 1)}')
+#echo $currMemoryVal
+if [ $currMemoryVal -lt 2 ]; then
+    memoryLineNum=$(grep -n 'memory' $wslconfig | cut -f1 -d :)
+    sed -i "$memoryLineNums s/.*/memory=2GB/" $wslconfig
+fi 

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#cd to script directory if not already in script directory
+CURRENT_DIRECTORY=${PWD##*/}
+function cdScriptDir {
+    if [ $CURRENT_DIRECTORY != 'script' ]; then
+        cd 'script'
+    fi
+}
+cdScriptDir
+
+#run ramCheck
+source ramCheck
+
+
+
+#source /ramCheck
+
+#docker build -t os:0.1 .
+# docker build --progress=plain --no-cache -t os:0.1 .
+# #docker build --progress=plain -t os:0.1 .
+
+# #--cap-add, --security-opt, seccomp=unconfined are for gdb and address space randomization
+# docker run --name os --rm --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -it os:0.1
+
+# docker image prune -a -990-f && docker volume prune -f &&  docker container prune -f
+
+
